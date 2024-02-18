@@ -1,4 +1,4 @@
-Rang,Name,Country,Surface area,Length,Depth,Volume
+Rank,Name,Country,Surface area,Length,Depth,Volume
 1,Caspian Sea,Azerbaijan,371.000,1199,1025,78.200
 2,Caspian Sea,Russia,371.000,1199,1025,78.200
 3,Caspian Sea,Kazakhstan,371.000,1199,1025,78.200
@@ -103,7 +103,7 @@ Rang,Name,Country,Surface area,Length,Depth,Volume
 102,Hirgis-Nur,Mongolia,1360,-,-,-
 103,Moss Lake,Canada,1359,-,-,-
 104,Cedar Lake,Canada,1339,-,-,-
-105,"Tangra Yum Tso",China,1295,-,-,-
+105,Tangra Yum Tso,China,1295,-,-,-
 106,Lake Toba,Indonesia,1264,100,505,240
 107,Lac-Minto,Canada,1256,-,-,-
 108,Lake-Aberdeen,Canada,1230,90,-,-
