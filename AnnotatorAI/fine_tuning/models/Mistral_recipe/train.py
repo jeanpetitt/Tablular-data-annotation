@@ -76,3 +76,4 @@ if __name__ == '__main__':
     """ push model on the hub"""
     model = load_peft_model("./result")
     model.push_to_hub(model_id=args.hf_rep)
+    tokenizer.push_to_hub(model_id=args.hf_rep)
