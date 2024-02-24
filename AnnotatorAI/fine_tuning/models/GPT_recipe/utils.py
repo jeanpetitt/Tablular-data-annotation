@@ -56,7 +56,9 @@ def peft_confifguration():
     peft_config = LoraConfig(
         lora_alpha=lora_alpha,
         lora_dropout=lora_dropout,
-        lora_r=lora_r
+        r=lora_r,
+        bias="none",
+        task_type="CAUSAL_LM"
     )
     return peft_config
 

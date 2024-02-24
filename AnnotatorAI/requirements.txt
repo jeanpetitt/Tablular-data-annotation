@@ -4,3 +4,4 @@ peft
 accelerate
 bitsAndBytes
 trl
+python_dotenv

@@ -27,14 +27,12 @@ def argsparser():
                         default="yvelos/semantic_annotation", help="dataset used to train model")
     parser.add_argument("--hf_rep", type=str,
                         default="yvelos/Annotator_2_T5", help="huggingFace repository for the fine tuned model")
+    parser.add_argument("--hf_token", type=str, help="huggingFace Token")
     args = parser.parse_args()
     return args
 
 
 def train(model_id, dataset):
-    """ Login into the hub"""
-    loginHub()
-
     """ Load LoRa configuration"""
     peft_config = peft_confifguration()
 
@@ -73,6 +71,8 @@ def train(model_id, dataset):
 
 if __name__ == '__main__':
     args = argsparser()
+    """ Login into the hub"""
+    loginHub(token=args.hf_token)
     tokenizer = train(args.model_id, args.dataset)
     """ push model on the hub"""
     model = load_peft_model("./result")
