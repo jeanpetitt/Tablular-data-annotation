@@ -1,0 +1,6 @@
+pandas
+transformers
+peft
+accelerate
+bitsAndBytes
+trl
