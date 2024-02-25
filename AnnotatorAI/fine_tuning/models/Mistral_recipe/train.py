@@ -83,7 +83,7 @@ data = [dataset_1, dataset_2, dataset_3, dataset_4]
 if __name__ == '__main__':
     args = argsparser()
     loginHub(args.hf_token)
-    for i in range(3):
+    for i in range(4):
         if i > 0:
             tokenizer = train("./result", data[i])
             """ push model on the hub"""
