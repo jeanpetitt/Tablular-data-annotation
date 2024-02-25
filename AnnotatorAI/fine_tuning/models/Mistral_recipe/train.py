@@ -85,14 +85,14 @@ if __name__ == '__main__':
     loginHub(args.hf_token)
     for i in range(4):
         if i > 0:
-            tokenizer = train("./result", data[i])
+            tokenizer = train("result", data[i])
             """ push model on the hub"""
-            model = load_peft_model("./result")
+            model = load_peft_model("result")
             model.push_to_hub(model_id=args.hf_rep)
             tokenizer.push_to_hub(model_id=args.hf_rep)
         else:
             tokenizer = train(args.model_id, data[i])
             """ push model on the hub"""
-            model = load_peft_model("./result")
+            model = load_peft_model("result")
             model.push_to_hub(model_id=args.hf_rep)
             tokenizer.push_to_hub(model_id=args.hf_rep)
