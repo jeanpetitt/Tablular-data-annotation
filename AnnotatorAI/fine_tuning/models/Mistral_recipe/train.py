@@ -72,7 +72,7 @@ def train(model_id, dataset):
 data = CustomDataset()
 
 data.load_csv_dataset(
-    "AnnotatorAI/fine_tuning/models/Mistral_recipe/data/semtab_dataset.csv")
+    "Tablular-data-annotation/AnnotatorAI/fine_tuning/models/Mistral_recipe/data/semtab_dataset.csv")
 
 dataset_1 = data[:1000]
 dataset_2 = data[1001:2000]
