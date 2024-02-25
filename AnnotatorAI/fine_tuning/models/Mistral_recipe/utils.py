@@ -26,7 +26,7 @@ def train_HyperParmeters():
         gradient_accumulation_steps=1,
         gradient_checkpointing=True,
         optim="paged_adamw_32bit",
-        save_steps=1,
+        save_steps=0,
         logging_steps=10,
         save_strategy="steps",
         learning_rate=2e-05,
