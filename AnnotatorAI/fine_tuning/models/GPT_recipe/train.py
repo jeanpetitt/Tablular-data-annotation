@@ -11,7 +11,7 @@ def format_instruction(sample):
         {sample['label']}
 
         # Entity Description
-        {sample['description']}
+        {sample['description'] if 'description' in sample else ''}
 
         # Entity URI
         { sample['entity']}
@@ -37,7 +37,7 @@ def train(model_id, dataset):
     peft_config = peft_confifguration()
 
     """ Load Training argumenst"""
-    args = train_HyperParmeters(),
+    args = train_HyperParmeters()
 
     """ Load Model and tokenizer"""
     model = load_model(model_id)

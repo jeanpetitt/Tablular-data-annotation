@@ -50,8 +50,8 @@ class CustomDataset:
         for data in vec_matrix.values:
             self.dataset.append(
                 {
-                    "entity_label": data[0],
-                    "entity_uri": data[4]
+                    "label": data[0],
+                    "entity": data[4]
                 }
             )
         return self.dataset
@@ -62,8 +62,9 @@ class CustomDataset:
         for data in file.values:
             self.dataset.append(
                 {
-                    "entity_label": data[0],
-                    "entity_uri": data[2]
+                    "label": data[0],
+                    "description": data[1],
+                    "entity": data[2]
                 }
             )
         return self.dataset
