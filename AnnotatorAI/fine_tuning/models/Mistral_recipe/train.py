@@ -2,6 +2,7 @@ from utils import loginHub, peft_confifguration, train_HyperParmeters, load_mode
 import time
 import gc
 import argparse
+from data.dataset import CustomDataset
 
 
 def format_instruction(sample):
@@ -68,11 +69,30 @@ def train(model_id, dataset):
     return tokenizer
 
 
+data = CustomDataset()
+
+data.load_csv_dataset(
+    "AnnotatorAI/fine_tuning/models/mistral/data/semtab.csv")
+
+dataset_1 = data[:1000]
+dataset_2 = data[1001:2000]
+dataset_3 = data[2001:3000]
+dataset_4 = data[3001:5000]
+data = [dataset_1, dataset_2, dataset_3, dataset_4]
+
 if __name__ == '__main__':
     args = argsparser()
     loginHub(args.hf_token)
-    tokenizer = train(args.model_id, args.dataset)
-    """ push model on the hub"""
-    model = load_peft_model("./result")
-    model.push_to_hub(model_id=args.hf_rep)
-    tokenizer.push_to_hub(model_id=args.hf_rep)
+    for i in range(3):
+        if i > 0:
+            tokenizer = train("./result", data[i])
+            """ push model on the hub"""
+            model = load_peft_model("./result")
+            model.push_to_hub(model_id=args.hf_rep)
+            tokenizer.push_to_hub(model_id=args.hf_rep)
+        else:
+            tokenizer = train(args.model_id, data[i])
+            """ push model on the hub"""
+            model = load_peft_model("./result")
+            model.push_to_hub(model_id=args.hf_rep)
+            tokenizer.push_to_hub(model_id=args.hf_rep)
