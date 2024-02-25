@@ -71,13 +71,13 @@ def train(model_id, dataset):
 
 data = CustomDataset()
 
-data.load_csv_dataset(
+datas = data.load_csv_dataset(
     "Tablular-data-annotation/AnnotatorAI/fine_tuning/models/Mistral_recipe/data/semtab_dataset.csv")
 
-dataset_1 = data[:1000]
-dataset_2 = data[1001:2000]
-dataset_3 = data[2001:3000]
-dataset_4 = data[3001:5000]
+dataset_1 = datas[:1000]
+dataset_2 = datas[1001:2000]
+dataset_3 = datas[2001:3000]
+dataset_4 = datas[3001:5000]
 data = [dataset_1, dataset_2, dataset_3, dataset_4]
 
 if __name__ == '__main__':
