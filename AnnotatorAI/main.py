@@ -19,6 +19,7 @@ eval_dataset_1 = datas[2001:3000]
 
 def main():
     sys_args = argsparser()
+    mistral.loginHub(token=sys_args.hf_token)
     training_args = TrainingArgument(
         learning_rate=2e-5,
         output_dir=sys_args.output_dir,
