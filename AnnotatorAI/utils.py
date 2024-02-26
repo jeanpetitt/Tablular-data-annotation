@@ -1,7 +1,7 @@
 
 from dotenv import load_dotenv
 from huggingface_hub import login
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, TrainingArguments
+from transformers import AutoTokenizer, MistralForCausalLM, BitsAndBytesConfig, TrainingArguments
 from trl import SFTTrainer
 import torch
 import os
@@ -29,8 +29,8 @@ def train_HyperParmeters():
         save_steps=0,
         logging_steps=10,
         save_strategy="steps",
-        learning_rate=2e-05,
-        weight_decay=0.001,
+        learning_rate=2e-5,
+        weight_decay=0.01,
         fp16=False,
         # bf16=bf16,
         max_grad_norm=0.3,
@@ -81,7 +81,7 @@ def load_model(model_id, device_map="auto"):
         bnb_4bit_quant_type=bnb_4bits_quan_type,
         bnb_4bits_compute_dtype=compute_dtype
     )
-    model = AutoModelForCausalLM.from_pretrained(
+    model = MistralForCausalLM.from_pretrained(
         model_id,
         quantization_config=bnb_config,
         use_cache=False,
@@ -129,3 +129,21 @@ def load_peft_model(model_id):
         is_trainable=True
     )
     return model
+
+
+def freeze_transformer_layers(model, num_layer):
+    for i, layer in enumerate(model.model.layers):
+        if i < num_layer:
+            for param in layer.parameters():
+                param.requires_grad = False
+
+
+def check_frozen_layers_peft_model(model):
+    for i, layer in enumerate(model.base_model.model.model.layers):
+        for name, param in layer.named_parameters():
+            print(
+                f"Layer {i}, parameter {name}: requires_grad = {param.requires_grad}")
+
+
+def byte2mb(x):
+    return int(x / 2**20)
