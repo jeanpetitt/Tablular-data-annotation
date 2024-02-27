@@ -1,0 +1,65 @@
+================Log Test1=============
+Start training:  527.493519658
+  0% 0/142 [00:00<?, ?it/s]/usr/local/lib/python3.10/dist-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+{'loss': 1.2823, 'learning_rate': 4.9835853054536846e-05, 'epoch': 0.14}
+{'loss': 1.309, 'learning_rate': 4.853558241029723e-05, 'epoch': 0.28}
+{'loss': 1.2702, 'learning_rate': 4.60031162446881e-05, 'epoch': 0.42}
+{'loss': 1.2665, 'learning_rate': 4.237104075901449e-05, 'epoch': 0.56}
+{'loss': 1.2511, 'learning_rate': 3.782951173819403e-05, 'epoch': 0.7}
+{'loss': 1.2953, 'learning_rate': 3.261629902459e-05, 'epoch': 0.85}
+{'loss': 1.3044, 'learning_rate': 2.7004338177886672e-05, 'epoch': 0.99}
+ 50% 71/142 [31:56<27:25, 23.17s/it]
+  0% 0/12 [00:00<?, ?it/s]
+ 17% 2/12 [00:34<02:50, 17.03s/it]
+ 25% 3/12 [01:08<03:37, 24.19s/it]
+ 33% 4/12 [01:42<03:43, 27.88s/it]
+ 42% 5/12 [02:16<03:30, 30.07s/it]
+ 50% 6/12 [02:50<03:08, 31.36s/it]
+ 58% 7/12 [03:24<02:41, 32.31s/it]
+ 67% 8/12 [03:58<02:11, 32.84s/it]
+ 75% 9/12 [04:32<01:39, 33.20s/it]
+ 83% 10/12 [05:06<01:06, 33.41s/it]
+ 92% 11/12 [05:40<00:33, 33.63s/it]
+                                    
+{'eval_loss': 1.3249270915985107, 'eval_runtime': 395.8259, 'eval_samples_per_second': 0.235, 'eval_steps_per_second': 0.03, 'epoch': 1.0}
+ 50% 71/142 [38:31<27:25, 23.17s/it]
+100% 12/12 [06:12<00:00, 31.10s/it]
+                                   /usr/local/lib/python3.10/dist-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+{'loss': 1.2647, 'learning_rate': 2.128744104861991e-05, 'epoch': 1.13}
+{'loss': 1.2659, 'learning_rate': 1.5764913382277903e-05, 'epoch': 1.27}
+{'loss': 1.3147, 'learning_rate': 1.0725884792841598e-05, 'epoch': 1.41}
+{'loss': 1.294, 'learning_rate': 6.434171503411557e-06, 'epoch': 1.55}
+{'loss': 1.2883, 'learning_rate': 3.114464358771102e-06, 'epoch': 1.69}
+{'loss': 1.2553, 'learning_rate': 9.405652306807954e-07, 'epoch': 1.83}
+{'loss': 1.2809, 'learning_rate': 2.628769395874586e-08, 'epoch': 1.97}
+100% 142/142 [1:10:26<00:00, 23.19s/it]
+  0% 0/12 [00:00<?, ?it/s]
+ 17% 2/12 [00:34<02:51, 17.17s/it]
+ 25% 3/12 [01:08<03:39, 24.37s/it]
+ 33% 4/12 [01:43<03:45, 28.20s/it]
+ 42% 5/12 [02:17<03:32, 30.36s/it]
+ 50% 6/12 [02:52<03:09, 31.64s/it]
+ 58% 7/12 [03:26<02:42, 32.53s/it]
+ 67% 8/12 [04:00<02:12, 33.09s/it]
+ 75% 9/12 [04:35<01:40, 33.50s/it]
+ 83% 10/12 [05:09<01:07, 33.76s/it]
+ 92% 11/12 [05:43<00:33, 33.95s/it]
+                                       
+{'eval_loss': 1.3249270915985107, 'eval_runtime': 399.3233, 'eval_samples_per_second': 0.233, 'eval_steps_per_second': 0.03, 'epoch': 2.0}
+100% 142/142 [1:17:06<00:00, 23.19s/it]
+100% 12/12 [06:15<00:00, 31.31s/it]
+{'train_runtime': 4626.6977, 'train_samples_per_second': 0.061, 'train_steps_per_second': 0.031, 'train_loss': 1.2825730871146834, 'epoch': 2.0}
+100% 142/142 [1:17:06<00:00, 32.58s/it]
+Total training time:  77.12  min
+
+
+
+
+
+
+
+
+
+

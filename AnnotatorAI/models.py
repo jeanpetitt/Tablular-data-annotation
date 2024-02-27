@@ -107,18 +107,12 @@ class BaseLLMTune:
 
     def format_instruction(self, sample):
         prompt = f"""
-        <s>
-            ### USe this Agent to make semantic annotation of you data
-            <INST>
-            # Entity Label
-            {sample['label']}
-
-            # Entity Description
-            {sample['description'] if 'description' in sample else ''}
-            </INST>
+        <s>     
+            [INST]# Entity Label
+            What is wikidata ID of {sample['label']}</INST>
         </s>
-            # Entity URI
-            { sample['entity']}
+        # Entity URI
+        { sample['entity']}
         """
         return prompt
 
