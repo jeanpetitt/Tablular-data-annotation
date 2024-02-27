@@ -9,7 +9,7 @@ mistral = BaseLLMTune()
 data = CustomDataset()
 
 datas = data.load_csv_dataset(
-    "Tablular-data-annotation/AnnotatorAI/fine_tuning/models/Mistral_recipe/data/semtab_dataset.csv")
+    "Tablular-data-annotation/AnnotatorAI/data/semtab_dataset.csv")
 
 train_dataset_1 = datas[:1500]
 train_dataset_2 = datas[1501:2000]
@@ -21,10 +21,13 @@ def main():
     sys_args = argsparser()
     mistral.loginHub(token=sys_args.hf_token)
     training_args = TrainingArgument(
-        learning_rate=2e-5,
+        learning_rate=5e-5,
         output_dir=sys_args.output_dir,
-        num_train_epochs=sys_args.epochs
+        num_train_epochs=sys_args.epochs,
+        per_device_train_batch_size=sys_args.per_divice_train_batch_size,
+        max_steps=sys_args.max_steps
     )
+    training_args = training_args.load_train_args()
     model = mistral.load_model(
         model_id=sys_args.model_id,
         load_in_4bit=True,

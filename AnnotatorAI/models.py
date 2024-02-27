@@ -59,7 +59,7 @@ class BaseLLMTune:
             print("you can use load the model in 4bit and 8bits in same time")
 
         if bnb_4bit_quant_type or bnb_4bit_use_double_quant or torch_dtype or bnb_4bits_compute_dtype is not None:
-            device_map = "auto"
+            device_map = {"": 0}
 
         if device_map == "auto":
             device_map = "cuda"
@@ -87,8 +87,8 @@ class BaseLLMTune:
             # get peft model
             peft_config = self.get_peft_config()
             model = get_peft_model(model, peft_config)
-            print("Trainable Parameters: ", trainable_params)
             trainable_params = model.print_trainable_parameters()
+            print("Trainable Parameters: ", trainable_params)
 
             model = prepare_model_for_kbit_training(model)
         else:

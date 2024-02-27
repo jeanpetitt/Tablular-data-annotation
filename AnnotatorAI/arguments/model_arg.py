@@ -6,17 +6,44 @@ import argparse
 
 def argsparser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_id", type=str,
-                        required=True, help="Name of the base model", default="mistralai/Mistral-7B-v0.1")
-    parser.add_argument("--output_dir", type=str,
-                        required=True, help="destination of the fine tuned model", default="result")
-    parser.add_argument("--epochs", type=int,
-                        required=True, help="destination of the fine tuned model", default=2)
+    parser.add_argument(
+        "--model_id",
+        type=str,
+        required=True,
+        help="Name of the base model",
+        default="mistralai/Mistral-7B-v0.1"
+    )
+    parser.add_argument(
+        "--output_dir",
+        type=str,
+        required=True,
+        help="destination of the fine tuned model",
+        default="result"
+    )
+    parser.add_argument(
+        "--epochs", type=int,
+        help="number of period to train the model",
+        default=2
+    )
+    parser.add_argument(
+        "--per_device_train_batch_size", type=int,
+        default=10
+    )
+    parser.add_argument(
+        "--max_steps", type=int,
+        default=-1
+    )
 
-    parser.add_argument("--dataset", type=str,
-                        default="yvelos/semantic_annotation", help="dataset used to train model")
-    parser.add_argument("--hf_rep", type=str,
-                        default="yvelos/Annotator_2_Mi", help="huggingFace repository for the fine tuned model")
+    parser.add_argument(
+        "--dataset", type=str,
+        default="yvelos/semantic_annotation",
+        help="dataset used to train model"
+    )
+    parser.add_argument(
+        "--hf_rep", type=str,
+        default="yvelos/Annotator_2_Mi",
+        help="huggingFace repository for the fine tuned model"
+    )
     parser.add_argument("--hf_token", type=str, help="huggingFace Token")
     args = parser.parse_args()
     return args
@@ -29,7 +56,7 @@ class TrainingArgument:
     output_dir: Optional[str] = None
     gradient_accumulation_steps: Optional[int] = 1
     gradient_checkpointing: Optional[bool] = True
-    per_device_train_batch_size: Optional[int] = 1
+    per_device_train_batch_size: Optional[int] = 10
     save_steps: Optional[int] = 0
     logging_steps: Optional[int] = 10
     weight_decay: Optional[float] = 0.05
