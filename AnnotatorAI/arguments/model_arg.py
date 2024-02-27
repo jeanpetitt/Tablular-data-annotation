@@ -27,7 +27,7 @@ def argsparser():
     )
     parser.add_argument(
         "--per_device_train_batch_size", type=int,
-        default=10
+        default=1
     )
     parser.add_argument(
         "--max_steps", type=int,

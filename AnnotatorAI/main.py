@@ -11,10 +11,8 @@ data = CustomDataset()
 datas = data.load_csv_dataset(
     "Tablular-data-annotation/AnnotatorAI/data/semtab_dataset.csv")
 
-train_dataset_1 = datas[:1500]
-train_dataset_2 = datas[1501:2000]
-train_dataset_3 = datas[3001:5000]
-eval_dataset_1 = datas[2001:3000]
+train_dataset_1 = datas[:4000]
+eval_dataset_1 = datas[4001:5000]
 
 
 def main():
@@ -58,6 +56,10 @@ def main():
     trainer.train()
     end_time = f"{(time.perf_counter() - start_time) /60 :.2f}"
     print("Total training time: ", end_time, " min")
+
+    del model
+    del trainer
+    gc.collect()
 
 
 if __name__ == '__main__':

@@ -128,7 +128,7 @@ class BaseLLMTune:
             train_dataset=train_dataset,
             eval_dataset=eval_dataset,
             formatting_func=formatting_func,
-            max_seq_length=1024,
+            max_seq_length=2048,
             tokenizer=tokenizer,
             packing=True,
             args=train_args
