@@ -19,7 +19,7 @@ def main():
     sys_args = argsparser()
     mistral.loginHub(token=sys_args.hf_token)
     training_args = TrainingArgument(
-        learning_rate=5e-5,
+        learning_rate=sys_args.lr,
         output_dir=sys_args.output_dir,
         num_train_epochs=sys_args.epochs,
         per_device_train_batch_size=sys_args.per_device_train_batch_size,

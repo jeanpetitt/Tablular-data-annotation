@@ -26,6 +26,11 @@ def argsparser():
         default=2
     )
     parser.add_argument(
+        "--lr", type=str,
+        help="learning rate for the training",
+        default=4e-15
+    )
+    parser.add_argument(
         "--per_device_train_batch_size", type=int,
         default=1
     )
@@ -64,7 +69,7 @@ class TrainingArgument:
     save_strategy: Optional[str] = "epoch"
     load_best_model_at_end: Optional[bool] = True
     lr_scheduler_type: Optional[str] = "cosine"
-    optim: Optional[str] = "paged_adamw_32bit"
+    optim: Optional[str] = "Adam8bit"
     report_to: Optional[str] = "tensorboard"
     seed: Optional[str] = 42
     max_steps: Optional[int] = -1
