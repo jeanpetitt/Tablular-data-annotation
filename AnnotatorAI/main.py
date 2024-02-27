@@ -24,7 +24,7 @@ def main():
         learning_rate=5e-5,
         output_dir=sys_args.output_dir,
         num_train_epochs=sys_args.epochs,
-        per_device_train_batch_size=sys_args.per_divice_train_batch_size,
+        per_device_train_batch_size=sys_args.per_device_train_batch_size,
         max_steps=sys_args.max_steps
     )
     training_args = training_args.load_train_args()
