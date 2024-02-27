@@ -69,7 +69,7 @@ class TrainingArgument:
     save_strategy: Optional[str] = "epoch"
     load_best_model_at_end: Optional[bool] = True
     lr_scheduler_type: Optional[str] = "cosine"
-    optim: Optional[str] = "Adam8bit"
+    optim: Optional[str] = "paged_adamw_8bit"
     report_to: Optional[str] = "tensorboard"
     seed: Optional[str] = 42
     max_steps: Optional[int] = -1
