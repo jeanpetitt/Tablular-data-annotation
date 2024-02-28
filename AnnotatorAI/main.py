@@ -14,7 +14,7 @@ data = CustomDataset()
 # train_dataset_1 = datas[:4000]
 # eval_dataset_1 = datas[4001:5000]
 
-datasets = data.load_dataset_hub("yvelos/semtab_dataset")
+datasets = data.load_dataset_hub("yvelos/semtab_2023_ground_thruth")
 
 
 def main():
@@ -25,7 +25,8 @@ def main():
         output_dir=sys_args.output_dir,
         num_train_epochs=sys_args.epochs,
         per_device_train_batch_size=sys_args.per_device_train_batch_size,
-        max_steps=sys_args.max_steps
+        max_steps=sys_args.max_steps,
+        optim=sys_args.optim
     )
     training_args = training_args.load_train_args()
     model = mistral.load_model(

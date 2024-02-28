@@ -99,6 +99,10 @@ class CustomDataset:
 
 
 # data = CustomDataset()
+# datasets = data.load_dataset_hub(
+#     "yvelos/semtab_2023_ground_thruth", split=['test'])
+
+# print(datasets)
 
 # datas = data.push_data_to_hub(
 #     path_file="cea_dataset.csv")

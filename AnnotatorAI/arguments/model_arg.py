@@ -38,6 +38,10 @@ def argsparser():
         "--max_steps", type=int,
         default=-1
     )
+    parser.add_argument(
+        "--optim", type=str,
+        default="paged_adamw_8bit"
+    )
 
     parser.add_argument(
         "--dataset", type=str,
