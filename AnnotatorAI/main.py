@@ -46,8 +46,8 @@ def main():
 
     trainer = mistral.trainer(
         model=model,
-        train_dataset=datasets['train'],
-        eval_dataset=datasets['test'],
+        train_dataset=datasets,
+        # eval_dataset=datasets['test'],
         train_args=training_args,
         formatting_func=formatting_func,
         tokenizer=tokenizer
