@@ -36,7 +36,7 @@ def argsparser():
     )
     parser.add_argument(
         "--max_steps", type=int,
-        default=-1
+        default=1
     )
     parser.add_argument(
         "--optim", type=str,
