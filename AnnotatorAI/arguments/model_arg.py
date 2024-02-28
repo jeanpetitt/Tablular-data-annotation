@@ -26,7 +26,7 @@ def argsparser():
         default=2
     )
     parser.add_argument(
-        "--lr", type=str,
+        "--lr", type=float,
         help="learning rate for the training",
         default=4e-15
     )

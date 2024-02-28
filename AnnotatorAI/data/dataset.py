@@ -1,7 +1,9 @@
+import json
 from datasets import load_dataset
 import pandas as pd
 import os
 import numpy as np
+from dotenv import load_dotenv
 
 
 def transform_table_to_cell_vector(table_path):
@@ -69,10 +71,36 @@ class CustomDataset:
             )
         return self.dataset
 
+    def push_data_to_hub(self, path_file):
+        load_dotenv()
+        if path_file.endswith("csv"):
+            dataset = load_dataset('csv', data_files=f"{path_file}")
+            train_size = 0.8
+            train_data = dataset['train'].train_test_split(
+                train_size=train_size)['train']
+            test_data = dataset['train'].train_test_split(
+                train_size=train_size)['test']
+            print(test_data[0])
+            with open("AnnotatorAI/data/test_semtab.jsonl", 'w') as f:
+
+                for data in test_data:
+                    json.dump(data, f)
+            with open("AnnotatorAI/data/train_semtab.jsonl", 'w') as f:
+
+                for data in train_data:
+                    json.dump(data, f)
+
+            print(dataset)
+        elif path_file.endswith("json"):
+            pass
+        else:
+            raise ValueError(
+                "this format is not valid, try to use csv, json, jsonl and parquet files")
+
 
 # data = CustomDataset()
 
-# datas = data.load_csv_dataset(
-#     path_csv="cea_dataset.csv")
+# datas = data.push_data_to_hub(
+#     path_file="cea_dataset.csv")
 
 # print(datas)

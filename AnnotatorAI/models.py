@@ -106,13 +106,8 @@ class BaseLLMTune:
         pass
 
     def format_instruction(self, sample):
-        prompt = f"""
-        <s>     
-            [INST]# Entity Label
-            What is wikidata ID of {sample['label']}</INST>
-        </s>
-        # Entity URI
-        { sample['entity']}
+        prompt = f"""<s>##Human:\n Generate wikidata URI of {sample['label']} \n ### Assistant: \n the wikidata uri of 
+        {sample['label']} is { sample['entity']}</s>
         """
         return prompt
 
@@ -128,6 +123,10 @@ class BaseLLMTune:
             args=train_args
         )
         return Trainer
+
+
+# model = BaseLLMTune()
+# model.loginHub()
 
 
 @dataclass

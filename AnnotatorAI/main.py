@@ -8,11 +8,13 @@ mistral = BaseLLMTune()
 
 data = CustomDataset()
 
-datas = data.load_csv_dataset(
-    "Tablular-data-annotation/AnnotatorAI/data/semtab_dataset.csv")
+# datas = data.load_csv_dataset(
+#     "Tablular-data-annotation/AnnotatorAI/data/semtab_dataset.csv")
 
-train_dataset_1 = datas[:4000]
-eval_dataset_1 = datas[4001:5000]
+# train_dataset_1 = datas[:4000]
+# eval_dataset_1 = datas[4001:5000]
+
+datasets = data.load_dataset_hub("yvelos/semtab_dataset")
 
 
 def main():
@@ -44,8 +46,8 @@ def main():
 
     trainer = mistral.trainer(
         model=model,
-        train_dataset=train_dataset_1,
-        eval_dataset=eval_dataset_1,
+        train_dataset=datasets['train'],
+        eval_dataset=datasets['test'],
         train_args=training_args,
         formatting_func=formatting_func,
         tokenizer=tokenizer
