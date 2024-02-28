@@ -38,7 +38,7 @@ def main():
     )
     training_args = training_args.load_train_args()
 
-    if sys_args.model_type == 'gpt2'.upper():
+    if sys_args.model_type == 'GPT2'.upper():
         gpt2.loginHub(token=sys_args.hf_token)
         model = gpt2.load_model(
             model_id=sys_args.model_id,
