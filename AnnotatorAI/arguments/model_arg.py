@@ -44,7 +44,7 @@ def argsparser():
     )
 
     parser.add_argument(
-        "--model_type", type=float,
+        "--model_type", type=str,
         help="chose wich model you want to finetune among gpt, mistral,llama, and t5",
         default="other"
     )
