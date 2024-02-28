@@ -44,6 +44,12 @@ def argsparser():
     )
 
     parser.add_argument(
+        "--model_type", type=float,
+        help="chose wich model you want to finetune among gpt, mistral,llama, and t5",
+        default="other"
+    )
+
+    parser.add_argument(
         "--dataset", type=str,
         default="yvelos/semantic_annotation",
         help="dataset used to train model"
