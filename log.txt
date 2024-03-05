@@ -1,4 +1,5 @@
 ================Log Test1=============
+pre_trained model name: GPT2
 Start training:  527.493519658
   0% 0/142 [00:00<?, ?it/s]/usr/local/lib/python3.10/dist-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
   warnings.warn(
@@ -53,6 +54,10 @@ Start training:  527.493519658
 {'train_runtime': 4626.6977, 'train_samples_per_second': 0.061, 'train_steps_per_second': 0.031, 'train_loss': 1.2825730871146834, 'epoch': 2.0}
 100% 142/142 [1:17:06<00:00, 32.58s/it]
 Total training time:  77.12  min
+
+
+
+++++++++++++++++ Test 2++++++++++++++++++++++++++++++++++++++++
 
 
 

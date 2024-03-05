@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import numpy as np
 from dotenv import load_dotenv
+import csv
 
 
 def transform_table_to_cell_vector(table_path):

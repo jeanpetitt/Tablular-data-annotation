@@ -28,12 +28,12 @@ class BaseLLMTune:
         peft_config = LoraConfig(
             lora_alpha=32,
             lora_dropout=0.1,
-            r=8,
+            r=64,  # 8
             bias="none",
             task_type=TaskType.CAUSAL_LM,
             inference_mode=False,
-            target_modules=['k_proj', 'gate_proj', 'v_proj',
-                            'up_proj', 'q_proj', 'o_proj', 'down_proj']
+            # target_modules=['k_proj', 'gate_proj', 'v_proj',
+            #                 'up_proj', 'q_proj', 'o_proj', 'down_proj']
         )
         return peft_config
 
