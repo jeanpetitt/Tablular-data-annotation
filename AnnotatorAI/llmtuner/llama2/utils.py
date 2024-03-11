@@ -65,7 +65,7 @@ class BaseLLMTune:
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
             device_map=device_map,
-            bnbConfig=self.bnbConfig,
+            quantization_config=self.bnbConfig,
             torch_dtype=torch.float16,
             use_cache=False,
             low_cpu_mem_usage=True,

@@ -1,11 +1,11 @@
-from utils import Llama2Tune
+from utils import GPT2Tune
 import time
 import gc
 from data.dataset import CustomDataset
 from arguments.model_arg import argsparser, TrainingArgument
 
 
-llama2 = Llama2Tune()
+gpt2 = GPT2Tune()
 data = CustomDataset()
 
 
@@ -35,16 +35,16 @@ def main():
     )
     training_args = training_args.load_train_args()
 
-    llama2.loginHub(token=sys_args.hf_token)
-    model = llama2.load_model(
+    gpt2.loginHub(token=sys_args.hf_token)
+    model = gpt2.load_model(
         model_id=sys_args.model_id,
         device_map={"": 0},
         use_peft=True
     )
-    tokenizer = llama2.load_tokenizer(sys_args.model_id)
-    formatting_func = llama2.format_instruction
+    tokenizer = gpt2.load_tokenizer(sys_args.model_id)
+    formatting_func = gpt2.format_instruction
     # train the model
-    trainer = llama2.trainer(
+    trainer = gpt2.trainer(
         model=model,
         train_dataset=dataset,
         # eval_dataset=datasets['test'],
