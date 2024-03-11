@@ -4,13 +4,13 @@ import torch
 import os
 from dotenv import load_dotenv
 from huggingface_hub import login
-from transformers import LlamaTokenizer, AutoTokenizer, AutoModelForCausalLM, GPT2Model, GPT2Tokenizer, BitsAndBytesConfig
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import get_peft_model, LoraConfig, TaskType, prepare_model_for_kbit_training
 from trl import SFTTrainer
 
 
 @dataclass
-class BaseLLMTune:
+class MistraLTune:
     def loginHub(self, token=None):
         if token is not None:
             login(token=token)
@@ -116,67 +116,3 @@ class BaseLLMTune:
 
 # model = BaseLLMTune()
 # model.loginHub()
-
-
-@dataclass
-class MistraLTune(BaseLLMTune):
-    pass
-
-
-@dataclass
-class Llama2Tune(BaseLLMTune):
-    def load_tokenizer(self, model_id):
-        tokenizer = LlamaTokenizer.from_pretrained(model_id)
-        tokenizer.pad_token_id = 1
-        tokenizer.padding_side = "left"
-        tokenizer.pad_token = tokenizer.eos_token
-        return tokenizer
-
-
-@dataclass
-class GPT2Tune(BaseLLMTune):
-    def get_peft_config(self):
-        peft_config = LoraConfig(
-            lora_alpha=32,
-            lora_dropout=0.1,
-            r=8,
-            bias="none",
-            task_type=TaskType.CAUSAL_LM,
-            inference_mode=False,
-        )
-        return peft_config
-
-    def load_model(
-        self,
-        model_id: Optional[str] = None,
-        use_peft: Optional[bool] = False
-    ):
-        if model_id is None:
-            print("You must provide a path of the pretrained model")
-
-        model = AutoModelForCausalLM.from_pretrained(
-            model_id
-        )
-        if use_peft == True:
-            # get peft model
-            peft_config = self.get_peft_config()
-            model = get_peft_model(model, peft_config)
-            # display the trainable parameters
-            model.print_trainable_parameters()
-            model = prepare_model_for_kbit_training(model)
-        else:
-            model = prepare_model_for_kbit_training(model)
-        return model
-
-    def load_tokenizer(self, model_id):
-        tokenizer = GPT2Tokenizer.from_pretrained(model_id)
-        tokenizer.pad_token_id = 0
-        tokenizer.padding_side = "left"
-        tokenizer.pad_token = tokenizer.eos_token
-        return tokenizer
-
-
-@dataclass
-class T5Tune(BaseLLMTune):
-    def __init__(self):
-        return super().__init__()
