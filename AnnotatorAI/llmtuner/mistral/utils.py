@@ -37,7 +37,8 @@ class MistraLTune:
         )
         return peft_config
 
-    def bnbConfig(self, bnb_4bits_compute_dtype="float16"):
+    def bnbConfig(self):
+        bnb_4bits_compute_dtype = "float16"
         bnb_4bits_compute_dtype = getattr(torch, bnb_4bits_compute_dtype)
 
         bnb_config = BitsAndBytesConfig(
