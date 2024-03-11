@@ -42,14 +42,7 @@ def main():
         gpt2.loginHub(token=sys_args.hf_token)
         model = gpt2.load_model(
             model_id=sys_args.model_id,
-            load_in_4bit=True,
-            bnb_4bit_use_double_quant=False,
-            bnb_4bits_compute_dtype='float16',
-            bnb_4bit_quant_type="nf4",
-            torch_dtype=torch.float16,
-            use_cache=False,
-            low_cpu_mem_usage=True,
-            return_dict=True,
+            device_map={"": 0},
             use_peft=True
         )
         tokenizer = gpt2.load_tokenizer(sys_args.model_id)
