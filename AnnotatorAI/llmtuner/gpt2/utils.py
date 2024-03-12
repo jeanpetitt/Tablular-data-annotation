@@ -104,7 +104,7 @@ class BaseLLMTune:
         Trainer = SFTTrainer(
             model=model,
             train_dataset=train_dataset,
-            eval_dataset=eval_dataset,
+            # eval_dataset=eval_dataset,
             formatting_func=formatting_func,
             max_seq_length=2048,
             tokenizer=tokenizer,

@@ -65,7 +65,7 @@ class BaseLLMTune:
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
             device_map=device_map,
-            quantization_config=self.bnbConfig,
+            quantization_config=self.bnbConfig(),
             torch_dtype=torch.float16,
             use_cache=False,
             low_cpu_mem_usage=True,
@@ -105,6 +105,7 @@ class BaseLLMTune:
             model=model,
             train_dataset=train_dataset,
             eval_dataset=eval_dataset,
+            peft_config=self.get_peft_config(),
             formatting_func=formatting_func,
             max_seq_length=2048,
             tokenizer=tokenizer,

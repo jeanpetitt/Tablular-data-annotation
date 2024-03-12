@@ -8,7 +8,10 @@ mistral = MistraLTune()
 data = CustomDataset()
 
 
-datasets = data.load_dataset_hub("yvelos/semtab_2023_ground_thruth")
+datasets = data.load_dataset_hub(
+    "yvelos/semtab_2023_ground_thruth", split="train")
+data_test = data.load_dataset_hub(
+    "yvelos/semtab_2023_ground_thruth", split="test")
 
 
 def augmented_data(datas):
@@ -45,7 +48,7 @@ def main():
     trainer = mistral.trainer(
         model=model,
         train_dataset=dataset,
-        # eval_dataset=datasets['test'],
+        eval_dataset=data_test,
         train_args=training_args,
         formatting_func=formatting_func,
         tokenizer=tokenizer

@@ -9,7 +9,10 @@ llama2 = Llama2Tune()
 data = CustomDataset()
 
 
-datasets = data.load_dataset_hub("yvelos/semtab_2023_ground_thruth")
+datasets = data.load_dataset_hub(
+    "yvelos/semtab_2023_ground_thruth", split="train")
+data_test = data.load_dataset_hub(
+    "yvelos/semtab_2023_ground_thruth", split="test")
 
 
 def augmented_data(datas):
